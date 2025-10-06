@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8" />
+<title>Get Alnejmah Sweets App</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<script>
+  const IOS_APP_STORE = "https://apps.apple.com/jo/app/alnejmah-sweets/id6747391529";
+  const ANDROID_PLAY_STORE = "https://play.google.com/store/apps/details?id=com.alnejmah";
+  const FALLBACK_WEB = "https://alnejmah.com"; // optional if you have a site
+
+  const ua = navigator.userAgent || navigator.vendor || window.opera;
+  const isAndroid = /Android/i.test(ua);
+  const isIOS = /iPhone|iPad|iPod/i.test(ua);
+  const isTouchMac = /Macintosh/.test(ua) && 'ontouchend' in document;
+
+  const go = url => { window.location.replace(url); };
+
+  if (isAndroid) {
+    go(ANDROID_PLAY_STORE);
+  } else if (isIOS || isTouchMac) {
+    go(IOS_APP_STORE);
+  } else {
+    document.write(`
+      <style>
+        body{font-family:system-ui;margin:2rem;line-height:1.5}
+        a{display:block;margin:1em 0;color:#0366d6}
+      </style>
+      <h1>Download Alnejmah Sweets App</h1>
+      <a href="${IOS_APP_STORE}">🍏 App Store (iPhone/iPad)</a>
+      <a href="${ANDROID_PLAY_STORE}">🤖 Google Play (Android)</a>
+    `);
+  }
+</script>
+</html>
